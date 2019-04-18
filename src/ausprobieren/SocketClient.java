@@ -58,7 +58,7 @@ public class SocketClient {
     }
 
     public String inputMessage(){
-        return "qwefqwefwefw";
+        return "wefawqef";
     }
 }
 

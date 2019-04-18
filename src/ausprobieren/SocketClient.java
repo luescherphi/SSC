@@ -58,6 +58,7 @@ public class SocketClient {
     }
 
     public String inputMessage(){
+        System.out.println("suepre");
         return "wefawqef";
     }
 }

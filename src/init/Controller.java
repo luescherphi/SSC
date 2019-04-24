@@ -3,9 +3,12 @@ package init;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
+import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
 public class Controller {
+    
+    private Stage primaryStage;
     
     @FXML
     private Button btnLaunchClient;
@@ -16,6 +19,8 @@ public class Controller {
     @FXML
     private void launchClient() {
         System.out.println("Launch Client");
+        client.Client clt = new client.Client(primaryStage);
+        clt.loadGUI();
     }
     
     @FXML
@@ -27,5 +32,9 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    public void setStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
     }
 }

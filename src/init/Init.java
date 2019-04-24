@@ -15,10 +15,13 @@ public class Init extends Application{
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view.fxml"));
+        Parent root = (Parent)loader.load();
+        Controller crtl = (Controller)loader.getController();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         System.out.println("Started");
+        crtl.setStage(primaryStage);
     }
     
 }

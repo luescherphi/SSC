@@ -1,10 +1,7 @@
 package client;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.*;
-import java.nio.Buffer;
+import init.Message;
 
 
 /**
@@ -20,8 +17,8 @@ public class ServerConnection {
     private String ip;
     private int port;
     private Socket clientSocket;
-    private PrintWriter outConnection;
-    private BufferedReader inConnection;
+    private ObjectOutputStream outConnection;
+    private ObjectInputStream inConnection;
 
     /**
      * defines ip and port
@@ -40,8 +37,8 @@ public class ServerConnection {
     public void startConnection(){
         try {
             clientSocket = new Socket(ip, port);
-            outConnection = new PrintWriter(clientSocket.getOutputStream(), true);
-            inConnection = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            outConnection = new ObjectOutputStream(clientSocket.getOutputStream());
+            inConnection = new ObjectInputStream(clientSocket.getInputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -51,11 +48,13 @@ public class ServerConnection {
 
 
 
-    public String recieveMessage(){
-        String message = "";
+    public Message recieveMessage(){
+        Message message = null;
         try {
-            message = inConnection.readLine();
+            message = (Message) inConnection.readObject();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return message;
@@ -63,31 +62,11 @@ public class ServerConnection {
 
     public boolean sendMessage(String message){
         try {
-            outConnection.println(message);
+            outConnection.writeObject(message);
             return true;
         } catch (Exception e) {
             return false;
         }
-    }
-
-    /**
-     * A simple method, that sends a ping to the Server.
-     * This method might get deleted later on in the Project
-     * @return true if ping was successful
-     */
-    public boolean pingConnection(){
-        boolean pingSuccess = false;
-        System.out.println("Sende Ping an " + ip + ":" + port);
-        outConnection.println("ping");
-        try {
-            String answer = inConnection.readLine();
-            System.out.println(answer);
-            pingSuccess = true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println(".... no answer");
-        }
-        return pingSuccess;
     }
 
     /**

@@ -1,25 +1,29 @@
 package client;
 
-import java.io.BufferedReader;
+import init.Message;
+
+import java.io.*;
 import java.io.IOException;
 import java.lang.Thread;
 
 public class MessageReceiver implements Runnable {
     
-    private BufferedReader inConnection;
+    private ObjectInputStream inConnection;
     
-    public MessageReceiver(BufferedReader inConnection) {
+    public MessageReceiver(ObjectInputStream inConnection) {
         this.inConnection = inConnection;
     }
     
     @Override
     public void run() {
-        String message = "";
+        Message message;
         while(!Thread.currentThread().isInterrupted()) {
             try {
-                message = inConnection.readLine();
+                message = (Message) inConnection.readObject();
                 System.out.println(message);
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }

@@ -19,6 +19,7 @@ public class ServerConnection {
     private Socket clientSocket;
     private ObjectOutputStream outConnection;
     private ObjectInputStream inConnection;
+    private MessageReceiver messageReceiver;
 
     /**
      * defines ip and port
@@ -39,6 +40,7 @@ public class ServerConnection {
             clientSocket = new Socket(ip, port);
             outConnection = new ObjectOutputStream(clientSocket.getOutputStream());
             inConnection = new ObjectInputStream(clientSocket.getInputStream());
+            this.messageReceiver = new MessageReceiver(inConnection);
         } catch (IOException e) {
             e.printStackTrace();
         }

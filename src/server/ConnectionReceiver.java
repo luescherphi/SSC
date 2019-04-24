@@ -31,6 +31,7 @@ public class ConnectionReceiver {
     public void startListening(int port) throws IOException{
         serverSocket = new ServerSocket(port);
         while(true) {
+            System.out.println("1234");
             try {
                 clientSocket = serverSocket.accept();
                 DataInputStream dis = new DataInputStream(clientSocket.getInputStream());

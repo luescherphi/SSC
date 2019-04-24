@@ -1,8 +1,13 @@
 package client;
 
 import javafx.stage.Stage;
+
+import java.io.IOException;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.fxml.FXMLLoader;
 
 public class Client {
 
@@ -13,7 +18,12 @@ public class Client {
     }
     
     public void loadGUI() {
-        primaryStage.setScene(new Scene(new Label("Hello")));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view.fxml"));
+        try {
+            Parent root = (Parent)loader.load();
+            primaryStage.setScene(new Scene(root));
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
     }
-    
 }

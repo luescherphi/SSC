@@ -34,10 +34,10 @@ public class ConnectionReceiver {
             System.out.println("1234");
             try {
                 clientSocket = serverSocket.accept();
-                DataInputStream dis = new DataInputStream(clientSocket.getInputStream());
-                DataOutputStream dos = new DataOutputStream(clientSocket.getOutputStream());
+                ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream());
+                ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
                 
-                Thread t = new ClientHandler(clientSocket, dis, dos);
+                Thread t = new ClientHandler(clientSocket, ois, oos);
                 t.start();
             } catch (Exception e) {
                 clientSocket.close();

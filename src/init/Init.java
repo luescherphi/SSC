@@ -15,9 +15,9 @@ public class Init extends Application{
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("viewInit.fxml"));
         Parent root = (Parent)loader.load();
-        Controller crtl = (Controller)loader.getController();
+        ControllerInit crtl = (ControllerInit)loader.getController();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         System.out.println("Started");

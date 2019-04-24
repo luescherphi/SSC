@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
-public class Controller {
+public class ControllerInit {
     
     private Stage primaryStage;
     

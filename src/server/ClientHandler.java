@@ -1,5 +1,7 @@
 package server;
 
+import init.Message;
+
 import java.net.*;
 import java.io.*;
 
@@ -14,13 +16,13 @@ import java.io.*;
 public class ClientHandler extends Thread {
     
     private Socket clientSocket;
-    private DataInputStream dis;
-    private DataOutputStream dos;
+    private ObjectInputStream ois;
+    private ObjectOutputStream oos;
     
-    public ClientHandler(Socket clientSocket, DataInputStream dis, DataOutputStream dos) {
+    public ClientHandler(Socket clientSocket, ObjectInputStream ois, ObjectOutputStream oos) {
         this.clientSocket = clientSocket;
-        this.dis = dis;
-        this.dos = dos;
+        this.ois = ois;
+        this.oos = oos;
     }
     /**
      * Tauscht Nachrichten mit einem Client aus.
@@ -31,11 +33,13 @@ public class ClientHandler extends Thread {
     public void run() {
         while(true) {
             try {
-                String message = dis.readUTF();
-                dos.writeUTF("successfully received");
+                Message message = (Message)ois.readObject();
+                oos.writeUTF("successfully received");
                 System.out.println("----------------------");
                 System.out.println(message);
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
-
-<VBox spacing="10" fx:id="root" alignment="CENTER" fx:controller="client.Controller" xmlns:fx="http://javafx.com/fxml">
-    <Button fx:id="btnTemp" text="HIER KLICKEN!!" prefWidth="200" onAction="#launchTemp"/>
-</VBox>

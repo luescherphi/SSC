@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox fx:id="root" alignment="CENTER" fx:controller="client.Controller" xmlns:fx="http://javafx.com/fxml">
+    <HBox fx:id="menubar" spacing="10">
+        <Button fx:id="btnNewChat" text="+" onAction="#newChat"/>
+        <Button fx:id="btnCloseChat" text="-" onAction="#closeChat"/>
+    </HBox>
+    <TabPane fx:id="tabPane">
+        <Tab fx:id="tab1" text="Tab1" closable="false"></Tab>
+        <Tab fx:id="tab2" text="Tab2"></Tab>
+    </TabPane>
+</VBox>

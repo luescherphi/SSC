@@ -46,6 +46,29 @@ public class ServerConnection {
         }
     }
 
+    //TODO startListening class for creating recieveMessage Thread
+
+
+
+    public String recieveMessage(){
+        String message = "";
+        try {
+            message = inConnection.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return message;
+    }
+
+    public boolean sendMessage(String message){
+        try {
+            outConnection.println(message);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     /**
      * A simple method, that sends a ping to the Server.
      * This method might get deleted later on in the Project
@@ -67,7 +90,7 @@ public class ServerConnection {
     }
 
     /**
-     * Closes input, output stream and closes clientSocket.
+     * Tries to close input, output stream and closes clientSocket.
      */
     public void stopConnection(){
         try {

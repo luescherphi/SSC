@@ -3,6 +3,9 @@ package server;
 import java.net.*;
 import java.io.*;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -20,8 +23,6 @@ public class Server {
     private ServerSocket serverSocket;
     private Socket clientSocket;
     private Stage primaryStage;
-    private PrintWriter out;
-    private BufferedReader in;
     
     /**
      * Constructor to instantiate a new Server
@@ -53,6 +54,36 @@ public class Server {
                 clientSocket.close();
                 e.printStackTrace();
             }
+        }
+    }
+    
+    public void loadGUI() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("viewServer.fxml"));
+        try {
+            Parent root = (Parent)loader.load();
+            primaryStage.setScene(new Scene(root));
+            ControllerServer ctrl = (ControllerServer)loader.getController();
+            ctrl.initController(this);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * This method reads the IP-Address of the Server Machine
+     * and returns it as a string
+     * @return String: IP-Address of Server
+     */
+    public String getIpAddress() {
+        try(final DatagramSocket socket = new DatagramSocket()){
+            //try to connect to 8.8.8.8 to locate the running Adapter
+            socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
+            String ipAddress = socket.getLocalAddress().getHostAddress();
+            socket.close();
+            return ipAddress;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
         }
     }
 }

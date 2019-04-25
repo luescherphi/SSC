@@ -2,33 +2,48 @@ package server;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.Tab;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ControllerServer {
-
-    @FXML
-    private Button btnTemp;
+    
+    private Server server;
     
     @FXML
-    private Button btnNewChat;
+    private Label lblIP;
     
     @FXML
-    private Button btnCloseChat;
+    private TextField tfPort;
     
     @FXML
-    private TabPane tabPane;
+    private Button btnLaunch;
     
-    @FXML
-    private void newChat() {
-        tabPane.getTabs().add(new Tab());
+    /**
+     * This method serves for displaying the server IP-Address on the User Interface
+     * @param server Server-Object which loads this GUI
+     */
+    public void initController(Server server) {
+        this.server = server;
+        lblIP.setText(server.getIpAddress());
     }
     
     @FXML
-    private void closeChat() {
-        Tab t = tabPane.getSelectionModel().getSelectedItem();
-        if(t.isClosable()) {
-            tabPane.getTabs().remove(t);
+    private void launchServer() {
+        Stage stage = (Stage)btnLaunch.getScene().getWindow();
+        stage.close();
+        int port = 0;
+        try {
+            port = Integer.parseInt(tfPort.getText());
+            server.startListening(port);
+        } catch (NumberFormatException e) {
+            //TODO Falsche Benutzereingabe abfangen
+            e.printStackTrace();
+        } catch (IOException e) {
+            //TODO Fehler bei Server-Startup abfangen
+            e.printStackTrace();
         }
     }
 }

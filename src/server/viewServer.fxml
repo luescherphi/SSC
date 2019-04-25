@@ -10,5 +10,5 @@
     <HBox>
         <Label>Geben Sie den Port ein:</Label><TextField fx:id="tfPort"></TextField>
     </HBox>
-    <Button fx:id="btnLaunch"></Button>
+    <Button fx:id="btnLaunch" onAction="#launchServer"></Button>
 </VBox>

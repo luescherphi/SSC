@@ -1,6 +1,6 @@
 package client;
 
-import init.Message;
+import resources.*;
 
 import java.io.*;
 import java.io.IOException;
@@ -37,6 +37,7 @@ public class MessageReceiver implements Runnable {
         while(!Thread.currentThread().isInterrupted()) {
             try {
                 message = (Message) inConnection.readObject();
+                //TODO add message to Client chatroom, return message
                 System.out.println(message);
             } catch (IOException e) {
                 e.printStackTrace();

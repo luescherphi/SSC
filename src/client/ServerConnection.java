@@ -1,7 +1,7 @@
 package client;
 import java.io.*;
 import java.net.*;
-import init.Message;
+import resources.Message;
 
 
 /**

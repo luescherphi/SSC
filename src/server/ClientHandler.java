@@ -1,7 +1,6 @@
 package server;
 
-import init.Message;
-
+import resources.*;
 import java.net.*;
 import java.io.*;
 
@@ -31,10 +30,13 @@ public class ClientHandler extends Thread {
      */
     @Override
     public void run() {
+        //TODO weitermachen
+        Chatroom chatroom = new Chatroom();
         while(true) {
             try {
                 Message message = (Message)ois.readObject();
-                oos.writeUTF("successfully received");
+                chatroom.distributeMessage(message);
+                oos.writeUTF("successfully received and Sent");
                 System.out.println("----------------------");
                 System.out.println(message);
             } catch (IOException e) {

@@ -23,7 +23,7 @@ public class Server {
     private ServerSocket serverSocket;
     private Socket clientSocket;
     private Stage primaryStage;
-    
+
     /**
      * Constructor to instantiate a new Server
      * @param primaryStage Hand over the previously used stage to the Server
@@ -38,7 +38,7 @@ public class Server {
      * wieder auf weitere eingehende Verbindungen reagieren zu können.
      * 
      * @param port int, Port-Nummer, auf der der Server hören soll
-     * @throws IOException
+     * @throws Exception when forming new Objects from connection fail.
      */
     public void startListening(int port) throws IOException{
         serverSocket = new ServerSocket(port);
@@ -56,7 +56,7 @@ public class Server {
             }
         }
     }
-    
+
     public void loadGUI() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("viewServer.fxml"));
         try {
@@ -68,7 +68,7 @@ public class Server {
             e.printStackTrace();
         }
     }
-    
+
     /**
      * This method reads the IP-Address of the Server Machine
      * and returns it as a string

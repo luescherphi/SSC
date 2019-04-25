@@ -60,9 +60,9 @@ public class Server {
     public void loadGUI() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("viewServer.fxml"));
         try {
-            Parent root = (Parent)loader.load();
+            Parent root = loader.load();
             primaryStage.setScene(new Scene(root));
-            ControllerServer ctrl = (ControllerServer)loader.getController();
+            ControllerServer ctrl = loader.getController();
             ctrl.initController(this);
         } catch(IOException e) {
             e.printStackTrace();

@@ -29,7 +29,7 @@ public class Client {
     public void loadGUI() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("viewClient.fxml"));
         try {
-            Parent root = (Parent)loader.load();
+            Parent root = loader.load();
             primaryStage.setScene(new Scene(root));
         } catch(IOException e) {
             e.printStackTrace();

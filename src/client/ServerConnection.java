@@ -46,11 +46,8 @@ public class ServerConnection {
         }
     }
 
-    //TODO startListening class for creating recieveMessage Thread
-
-
-
-    public Message recieveMessage(){
+    @Deprecated
+    public Message receiveMessage(){
         Message message = null;
         try {
             message = (Message) inConnection.readObject();

@@ -1,12 +1,13 @@
-package init;
+package resources;
 import java.time.LocalDateTime;
 
 /**
  * A Class for the Message Object. It contains the Author, Timestamp and the Message Text.
  */
 public class Message {
-    private String author;
+    private int chatroomID;
     private LocalDateTime timestamp;
+    private String author;
     private String messageText;
 
     /**
@@ -15,9 +16,10 @@ public class Message {
      * @param timestamp of the Message Date and Time ISO-8601
      * @param messageText of Message
      */
-    public Message(String author, LocalDateTime timestamp, String messageText){
-        this.author = author;
+    public Message(int chatroomID, String author, LocalDateTime timestamp, String messageText){
+        this.chatroomID = chatroomID;
         this.timestamp = timestamp;
+        this.author = author;
         this.messageText = messageText;
     }
 
@@ -31,5 +33,9 @@ public class Message {
 
     public String getMessageText() {
         return messageText;
+    }
+
+    public int getChatroomID() {
+        return chatroomID;
     }
 }

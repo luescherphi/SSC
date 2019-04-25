@@ -3,6 +3,8 @@ package server;
 import java.net.*;
 import java.io.*;
 
+import javafx.stage.Stage;
+
 /**
  * Diese Klasse enthält die Logik zum Erstellen und Verwalten von Verbindungen
  * mit Clients. Die Verarbeitung erfolgreich erstellter Verbindugnen wird dabei
@@ -13,12 +15,21 @@ import java.io.*;
  * @since 1.8.0
  */
 
-public class ConnectionReceiver {
+public class Server {
     
     private ServerSocket serverSocket;
     private Socket clientSocket;
+    private Stage primaryStage;
     private PrintWriter out;
     private BufferedReader in;
+    
+    /**
+     * Constructor to instantiate a new Server
+     * @param primaryStage Hand over the previously used stage to the Server
+     */
+    public Server(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
     
     /**
      * Diese Methode erstellt den Server-Socket und leitet eingehende Verbindungen
@@ -31,7 +42,6 @@ public class ConnectionReceiver {
     public void startListening(int port) throws IOException{
         serverSocket = new ServerSocket(port);
         while(true) {
-            System.out.println("1234");
             try {
                 clientSocket = serverSocket.accept();
                 ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream());

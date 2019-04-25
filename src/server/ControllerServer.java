@@ -1,11 +1,11 @@
-package client;
+package server;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.Tab;
 
-public class ControllerClient {
+public class ControllerServer {
 
     @FXML
     private Button btnTemp;

@@ -26,7 +26,7 @@ public class ControllerInit {
     @FXML
     private void launchServer() {
         System.out.println("Launch Server");
-        server.ConnectionReceiver srv = new server.ConnectionReceiver();
+        server.Server srv = new server.Server(primaryStage);
         try {
             srv.startListening(6666);
         } catch (IOException e) {

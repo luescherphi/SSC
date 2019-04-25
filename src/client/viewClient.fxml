@@ -9,7 +9,15 @@
         <Button fx:id="btnCloseChat" text="-" onAction="#closeChat"/>
     </HBox>
     <TabPane fx:id="tabPane">
-        <Tab fx:id="tab1" text="Tab1" closable="false"></Tab>
+        <Tab fx:id="tab1" text="Tab1" closable="false">
+            <VBox fx:id="vbTab">
+                <VBox fx:id="vbChat" prefWidth="500" prefHeight="200"></VBox>
+                <HBox spacing="10">
+                    <TextField fx:id="tfChatInput" prefWidth="420" prefHeight="40"></TextField>
+                    <Button prefWidth="70" prefHeight="40"></Button>
+                </HBox>
+            </VBox>
+        </Tab>
         <Tab fx:id="tab2" text="Tab2"></Tab>
     </TabPane>
 </VBox>

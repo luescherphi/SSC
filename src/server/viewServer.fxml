@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox fx:id="root" alignment="CENTER" fx:controller="server.ControllerServer" xmlns:fx="http://javafx.com/fxml">
+    <HBox>
+        <Label>Ihre IP-Adresse ist:</Label><Label fx:id="lblIP"></Label>
+    </HBox>
+    <HBox>
+        <Label>Geben Sie den Port ein:</Label><TextField fx:id="tfPort"></TextField>
+    </HBox>
+    <Button fx:id="btnLaunch"></Button>
+</VBox>

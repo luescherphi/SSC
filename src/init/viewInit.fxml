@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 
-<VBox spacing="10" fx:id="root" alignment="CENTER" fx:controller="init.Controller" xmlns:fx="http://javafx.com/fxml">
+<VBox spacing="10" fx:id="root" alignment="CENTER" fx:controller="init.ControllerInit" xmlns:fx="http://javafx.com/fxml">
     <Button fx:id="btnLaunchClient" text="Launch As Client" prefWidth="200" onAction="#launchClient"/>
     <Button fx:id="btnLaunchServer" text="Launch as Server" prefWidth="200" onAction="#launchServer"/>
 </VBox>

@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 
-<VBox fx:id="root" alignment="CENTER" fx:controller="client.Controller" xmlns:fx="http://javafx.com/fxml">
+<VBox fx:id="root" alignment="CENTER" fx:controller="client.ControllerClient" xmlns:fx="http://javafx.com/fxml">
     <HBox fx:id="menubar" spacing="10">
         <Button fx:id="btnNewChat" text="+" onAction="#newChat"/>
         <Button fx:id="btnCloseChat" text="-" onAction="#closeChat"/>
